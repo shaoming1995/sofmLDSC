@@ -27,7 +27,7 @@ sofmldsc_gc<-function(name,key,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop
     write.table(GWAS1, gzfile(GWAS1name1),
                 sep = "\t", row.names = FALSE)
     test2<-try(GWAS2<- GWAS2summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
-    if(class(test1)=="try-error"){
+    if(class(test2)=="try-error"){
       GWAS2<- GWAS2summary[,c("other_allele.outcome","effect_allele.outcome","beta.outcome","se.outcome","samplesize.outcome","SNP")]
     }else{
       colnames(GWAS2)<-c("A2","A1","beta","se","N","SNP")
