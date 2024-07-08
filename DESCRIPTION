@@ -1,6 +1,6 @@
 Package: sofmLDSC
 Title: What the Package Does (One Line, Title Case)
-Version: 0.23.9.27
+Version: 0.24.7.09
 Authors@R: 
     person("Ming", "Shao", , "shaoming0928@example.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
