@@ -1,14 +1,13 @@
 #' @title 激活ldsc函数
-#' @param name 学号
+#' @param keyssh 学号
 #' @param path 激活包的存放路径
-#' @param key 密码
 #' @export
-Activate_ldsc<-function(name,key,path){
-  A<-name
-  A<-as.numeric(gsub("DK","00",A))
-  C<-A+key
-  C<-C/10000
-  if(C==231){
+Activate_ldsc<-function(keyssh,path){
+ RegistID_dat <- RegistID_dat
+  RegistID_u <- subset(RegistID_dat, IK == keyssh)
+  tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_",
+                   RegistID_u$RegistID)
+  if (RegistID_u$FINN %in% tempid) {
     pkg_path1<-paste0(path,"/ActivateLDSC.zip")
     devtools::install_local(pkg_path1)
     cat("环境已经配置完成ldsc所有函数已被激活")}else{
