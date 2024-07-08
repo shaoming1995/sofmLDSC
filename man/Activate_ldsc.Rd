@@ -4,12 +4,11 @@
 \alias{Activate_ldsc}
 \title{激活ldsc函数}
 \usage{
-Activate_ldsc(name, key, path)
+Activate_ldsc(keyssh, path)
 }
 \arguments{
-\item{name}{学号}
 
-\item{key}{密码}
+\item{keyssh}{密码}
 
 \item{path}{激活包的存放路径}
 }
