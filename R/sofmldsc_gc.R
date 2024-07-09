@@ -5,14 +5,16 @@
 #' @param GWAS1name GWAS summay1名称
 #' @param GWAS2name GWAS summay2名称
 #' @param pop 参考人群EUR欧洲 EAS亚洲
+#' @param ready_data 是否有准备好的GWASname-sumstats-munged.txt.gz文件
 #' @export
 
-sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
+sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop,ready_data=F){
   RegistID_dat <- RegistID_dat
     RegistID_u <- subset(RegistID_dat, IK == keyssh)
     tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_", 
         RegistID_u$RegistID)
     if (RegistID_u$FINN %in% tempid) {
+      if(ready_data==F){
       message("开始准备",GWAS1name,"的数据...")
     test1<-try(GWAS1<- GWAS1summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
     if(class(test1)=="try-error"){
@@ -43,7 +45,7 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     write.table(GWAS2, gzfile(GWAS2name1),
                 sep = "\t", row.names = FALSE)
       
-  cat("已经完成",GWAS2name,"的数据准备!")
+  cat("已经完成",GWAS2name,"的数据准备!")}else{
       
     rg_res <- ldscr::ldsc_rg(
       munged_sumstats = list(
@@ -57,7 +59,7 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     dir.create("遗传学分析结果")
     filenamepath<-paste0("遗传学分析结果","\\",filename)
     write.csv(rg,filenamepath,quote = F,row.names = T)
-    cat("您的遗传度以及遗传关联性分析已经完成请前往文件夹中查看")}else{
+    cat("您的遗传度以及遗传关联性分析已经完成请前往文件夹中查看")}}else{
       cat("请联系微信联系SFM19950928获取密钥")
     }
 }
