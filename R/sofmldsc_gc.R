@@ -46,7 +46,8 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop,r
                 sep = "\t", row.names = FALSE)
       
   cat("已经完成",GWAS2name,"的数据准备!")}else{
-      
+     GWAS1name1<-paste0(GWAS1name,"-sumstats-munged.txt.gz")
+      GWAS2name1<-paste0(GWAS2name,"-sumstats-munged.txt.gz")
     rg_res <- ldscr::ldsc_rg(
       munged_sumstats = list(
         GWAS1name1,
