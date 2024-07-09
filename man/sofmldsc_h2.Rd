@@ -4,12 +4,10 @@
 \alias{sofmldsc_h2}
 \title{用于计算两个性状之间的遗传度以及遗传关联性}
 \usage{
-sofmldsc_h2(name, key, GWAS1summary, GWAS1name, pop)
+sofmldsc_h2(keyssh, GWAS1summary, GWAS1name, pop)
 }
 \arguments{
-\item{name}{学号}
-
-\item{key}{密码}
+\item{keyssh}{学号}
 
 \item{GWAS1summary}{预处理好的GWAS summay}
 
