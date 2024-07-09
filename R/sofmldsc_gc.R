@@ -13,6 +13,7 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_", 
         RegistID_u$RegistID)
     if (RegistID_u$FINN %in% tempid) {
+      cat("开始准备",GWAS1name,"的数据"）
     test1<-try(GWAS1<- GWAS1summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
     if(class(test1)=="try-error"){
       GWAS1<- GWAS1summary[,c("other_allele.outcome","effect_allele.outcome","beta.outcome","se.outcome","samplesize.outcome","SNP")]
@@ -25,8 +26,10 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     GWAS1name1<-paste0(GWAS1name,"-sumstats-munged.txt.gz")
     write.table(GWAS1, gzfile(GWAS1name1),
                 sep = "\t", row.names = FALSE)
+    cat("已经完成",GWAS1name,"的数据准备")
     test2<-try(GWAS2<- GWAS2summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
     if(class(test2)=="try-error"){
+      cat("第一次尝试准备",GWAS2name,"的数据失败，正在进行第二次数据准备") 
       GWAS2<- GWAS2summary[,c("other_allele.outcome","effect_allele.outcome","beta.outcome","se.outcome","samplesize.outcome","SNP")]
     }else{
       colnames(GWAS2)<-c("A2","A1","beta","se","N","SNP")
@@ -37,7 +40,7 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     GWAS2name1<-paste0(GWAS2name,"-sumstats-munged.txt.gz")
     write.table(GWAS2, gzfile(GWAS2name1),
                 sep = "\t", row.names = FALSE)
-
+cat("已经完成",GWAS2name,"的数据准备")
     rg_res <- ldscr::ldsc_rg(
       munged_sumstats = list(
         GWAS1name1,
