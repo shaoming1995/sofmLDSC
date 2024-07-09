@@ -13,7 +13,7 @@ sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
     tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_", 
         RegistID_u$RegistID)
     if (RegistID_u$FINN %in% tempid) {
-      cat("开始准备",GWAS1name,"的数据"）
+      cat("开始准备",GWAS1name,"的数据")
     test1<-try(GWAS1<- GWAS1summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
     if(class(test1)=="try-error"){
       GWAS1<- GWAS1summary[,c("other_allele.outcome","effect_allele.outcome","beta.outcome","se.outcome","samplesize.outcome","SNP")]
