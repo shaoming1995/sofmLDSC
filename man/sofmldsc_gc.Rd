@@ -4,7 +4,7 @@
 \alias{sofmldsc_gc}
 \title{用于计算两个性状之间的遗传度以及遗传关联性}
 \usage{
-sofmldsc_gc(keyssh, GWAS1summary, GWAS2summary, GWAS1name, GWAS2name, pop)
+sofmldsc_gc(keyssh, GWAS1summary, GWAS2summary, GWAS1name, GWAS2name, pop,ready_data)
 }
 \arguments{
 \item{keyssh}{学号}
@@ -18,6 +18,8 @@ sofmldsc_gc(keyssh, GWAS1summary, GWAS2summary, GWAS1name, GWAS2name, pop)
 \item{GWAS2name}{GWAS summay2名称}
 
 \item{pop}{参考人群EUR欧洲 EAS亚洲}
+
+\item{ready_data}{是否有GWASname-sumstats-munged.txt.gz数据}
 }
 \description{
 用于计算两个性状之间的遗传度以及遗传关联性
