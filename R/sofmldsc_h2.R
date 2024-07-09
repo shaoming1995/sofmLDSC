@@ -1,16 +1,15 @@
 #' @title 用于计算两个性状之间的遗传度以及遗传关联性
-#' @param name 学号
-#' @param key 密码
+#' @param keyssh 学号
 #' @param GWAS1summary 预处理好的GWAS summay
 #' @param GWAS1name GWAS summay名称
 #' @param pop 参考人群EUR欧洲 EAS亚洲
 #' @export
-sofmldsc_h2<-function(name,key,GWAS1summary,GWAS1name,pop){
-  A<-name
-  A<-as.numeric(gsub("DK","00",A))
-  C<-A+key
-  C<-C/10000
-  if(C==231){
+sofmldsc_h2<-function(keyssh,GWAS1summary,GWAS1name,pop){
+RegistID_dat <- RegistID_dat
+    RegistID_u <- subset(RegistID_dat, IK == keyssh)
+    tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_", 
+        RegistID_u$RegistID)
+    if (RegistID_u$FINN %in% tempid) {
     test1<-try(GWAS1<- GWAS1summary[,c("other_allele.exposure","effect_allele.exposure","beta.exposure","se.exposure","samplesize.exposure","SNP")])
     if(class(test1)=="try-error"){
       GWAS1<- GWAS1summary[,c("other_allele.outcome","effect_allele.outcome","beta.outcome","se.outcome","samplesize.outcome","SNP")]
