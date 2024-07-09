@@ -7,7 +7,7 @@
 #' @param pop 参考人群EUR欧洲 EAS亚洲
 #' @export
 
-sofmldsc_gc<-function(name,key,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
+sofmldsc_gc<-function(keyssh,GWAS1summary,GWAS2summary,GWAS1name,GWAS2name,pop){
   RegistID_dat <- RegistID_dat
     RegistID_u <- subset(RegistID_dat, IK == keyssh)
     tempid <- paste0(keyssh, "_", Sys.info()["nodename"], "_", 
